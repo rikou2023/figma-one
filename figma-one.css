@@ -45,16 +45,50 @@ body {
     margin-left: 20px;
 }
 
-.nav-links a {
+.navbar .nav-links a {
+    position: relative;
     text-decoration: none;
-    color: black !important;
     font-size: 16px;
     padding: 10px;
     border-radius: 5px;
 }
 
-.nav-links a:hover {
-    background-color: #555;
+.nav-links a {
+    color: black !important;
+    font-weight: 700;
+}
+
+@media only screen and (min-width: 1024px) {
+     .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: #e74c3c;
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+        opacity: 1;
+        bottom: -10px;
+    }
+
+    .first {
+        width: 180px;
+    }
+
+    .footer-content {
+        margin-top: 130px;
+    }
+
+    .col1 { width: 180px; }
+    .col-wide { width: 261px; }
 }
 
 .pricing {
@@ -70,10 +104,10 @@ body {
     }
 
     .center {
-        padding-top: 283px;
+        padding-top: 151px;
     }
     .right {
-        padding-top: 348px;
+        padding-top: 230px;
 
         img {
             width: 153px;
@@ -84,18 +118,18 @@ body {
 
 .main-title {
     position: absolute;
-    top: 55%;
-    left: 45%;
+    top: 36%;
+    left: 42%;
     font-size: 48px;
 }
 
 .price {
     width: 965px;
-    height: 265px;
+    height: 218px;
 }
 
 .courses {
-    margin-top: 112px;
+    margin-top: 167px;
 }
 
 .course-title {
@@ -112,8 +146,7 @@ body {
     color: white;
     font-size: 16px;
     line-height: 16px;
-    letter-spacing: 10%;
-    height: 50px;
+    height: 42px;
 }
 
 .button-group {
@@ -201,6 +234,10 @@ td {
     margin-top: 10px
 }
 
+.price-img {
+    display: flex;
+    justify-content: center;
+}
 .payment-details {
     margin-top: 50px
 }
@@ -272,11 +309,23 @@ td {
     }
 }
 
-/* 在现有CSS的末尾添加移动端样式 */
+.show {
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    width: 380px;
+    max-width: 100%;
+    margin-top: 45px;
+    border: 2px solid white;
+    height: 60px;
+    border-radius: 30px;
+    background-color: transparent;
+}
+
+/* sp */
 @media only screen and (max-width: 768px) {
     .container {
         max-width: 100%;
-        padding: 0 15px;
         overflow-x: hidden;
     }
 
@@ -299,8 +348,11 @@ td {
     }
 
     .nav-links li {
-        margin: 5px 0;
+        padding: 5px 0;
         text-align: center;
+        border-bottom: 1px solid #FFFFFF;
+        border-right: 1px solid #FFFFFF;
+        margin-left: 0 !important;
     }
 
     .left, .right {
@@ -338,6 +390,7 @@ td {
 
     .payment-container {
         margin: 30px auto;
+        padding: 0 15px;
     }
 
     .summary-item {
@@ -390,12 +443,23 @@ td {
 
     .bottom-main {
         flex-direction: column;
+
+        .logo {
+            display: flex;
+            justify-content: center;
+        }
     }
 
     .bottom-content {
         flex-direction: column;
         text-align: center;
+
+        div {
+            margin-top: 15px;
+        }
     }
+
+
 }
 
 @media only screen and (max-width: 480px) {
@@ -507,8 +571,29 @@ td {
 }
 
 @media only screen and (max-width: 900px) {
-    .nav-links {
-        display: none;
+    .navbar {
+        .nav-links {
+            display: none;
+        }
+    }
+
+    .bottom-main {
+        .nav-links {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            background-color: #F0F0F0;
+
+            li a {
+                -webkit-tap-highlight-color: transparent;
+                color: black !important;
+                font-weight: 400;
+            }
+
+            li:active {
+                background-color: #8d8d8d;
+                color: #fff;
+            }
+        }
     }
 
     .hamburger {
